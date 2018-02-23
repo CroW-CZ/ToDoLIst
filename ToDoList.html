@@ -17,11 +17,15 @@
       <input type="button" value="추가" id="button" class="btn">
     </div>
   </div>
-  <div id='list'>
-  <ul class="list-group">
-    <li id='todo'><input type="checkbox">할거</li>
-    <li id='done'><input type="checkbox">끝난거</li>
+  <ul id='list' class="list-group">
+    <!--<li id='done'><input type="checkbox">끝난거</li>/-->
   </ul>
-  </div>
+  <template id='todoTemplate'>
+    <li id='todo'>
+      <input type="checkbox">
+      <span id='add'></span>
+    </li>
+  </template>
+  <script src="ToDo.js"></script>
 </body>
 </html>
