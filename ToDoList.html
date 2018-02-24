@@ -22,7 +22,7 @@
   </ul>
   <template id='todoTemplate'>
     <li id='todo'>
-      <input type="checkbox">
+      <input type="checkbox" id='checkbox' onchange="todoStateChange(this);">
       <span id='add'></span>
     </li>
   </template>

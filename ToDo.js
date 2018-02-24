@@ -4,8 +4,15 @@ var todoList = document.getElementById('list');
 var todoTemplate = document.getElementById('todoTemplate').innerHTML;
 
 button.addEventListener('click', addTodo);
+todoText.addEventListener('keyup', checkEnter);
 
-function addTodo(event) {
+function checkEnter(event) {
+  if(event.keyCode == 13){
+    addTodo();
+  }
+}
+
+function addTodo() {
   if (todoText.value == '') {
     return;
   }
@@ -14,4 +21,13 @@ function addTodo(event) {
   newTodo.innerHTML += todoText.value;
   todoText.value = '';
   newTodo.id = 'added';
+}
+
+function todoStateChange(checkbox) {
+  if(checkbox.checked){
+    checkbox.parentElement.id = 'done';
+  }
+  else {
+    checkbox.parentElement.id = 'todo';
+  }
 }
