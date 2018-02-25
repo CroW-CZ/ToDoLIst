@@ -18,12 +18,13 @@
     </div>
   </div>
   <ul id='list' class="list-group">
-    <!--<li id='done'><input type="checkbox">끝난거</li>/-->
   </ul>
   <template id='todoTemplate'>
-    <li id='todo'>
-      <input type="checkbox" id='checkbox' onchange="todoStateChange(this);">
-      <span id='add'></span>
+    <li class='todo'>
+      <input type="checkbox" class="checkbox">
+      <label>
+        <span id='add'></span>
+      </label>
     </li>
   </template>
   <script src="ToDo.js"></script>

@@ -5,6 +5,7 @@ var todoTemplate = document.getElementById('todoTemplate').innerHTML;
 
 button.addEventListener('click', addTodo);
 todoText.addEventListener('keyup', checkEnter);
+todoList.addEventListener('change', todoStateChange);
 
 todoList.innerHTML = load();
 
@@ -22,26 +23,26 @@ function addTodo() {
   var newTodo = document.getElementById('add');
   newTodo.innerHTML += todoText.value;
   todoText.value = '';
-  newTodo.id = 'added';
+  newTodo.removeAttribute('id');
   save();
 }
 
-function todoStateChange(checkbox) {
-  if(checkbox.checked){
-    checkbox.parentElement.id = 'done';
-    checkbox.outerHTML = '<input type="checkbox" id="checkbox" checked onchange="todoStateChange(this);">';
-    save();
+function todoStateChange(event) {
+  var checkbox = event.target;
+  if (checkbox.className ==! 'checkbox'){
+    return;
   }
-  else {
-    checkbox.parentElement.id = 'todo';
-    checkbox.outerHTML = '<input type="checkbox" id="checkbox" unchecked onchange="todoStateChange(this);">';    
-    save();
+  if (checkbox.checked){
+    checkbox.outerHTML = '<input type="checkbox" class="checkbox" checked>';
   }
+  else if (!checkbox.checked) {
+    checkbox.outerHTML = '<input type="checkbox" class="checkbox">';
+  }
+  save();
 }
 
 function save() {
-  var saveList = document.getElementById('todo').parentElement.innerHTML;
-  localStorage.setItem('ToDoList', saveList);
+  localStorage.setItem('ToDoList', todoList.innerHTML);
 }
 
 function load() {
