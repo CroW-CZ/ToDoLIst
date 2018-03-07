@@ -41,8 +41,10 @@ li{
   }
 input[type=checkbox] + label{
   color: #5f5f5f;
+  margin: 0;
 }
 input[type=checkbox]:checked + label{
   color: #9f9f9f;
   text-decoration-line: line-through;
+  margin: 0;
 }
