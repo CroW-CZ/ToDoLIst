@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    volumes:
+      - ./front:/usr/share/nginx/html
+    ports:
+      - "80:80"
+
+  db:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+
+  openjdk:
+    image: openjdk:alpine
+    volumes:
+      - ./ToDoListAPIServer/build/libs/ToDoListAPIServer-0.0.1-SNAPSHOT.jar:/app.jar
+    ports:
+      - "8080:8080"
+    command: java -jar app.jar
